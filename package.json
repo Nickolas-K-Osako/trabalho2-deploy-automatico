@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "server": "npx json-server ./jsonserver/db.json --port 3001 --delay 2000"
+    "server": "json-server --watch ./db.json --host 0.0.0.0 --port 3001"
   },
   "dependencies": {
     "axios": "^1.20.0",

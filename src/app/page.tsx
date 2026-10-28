@@ -21,7 +21,7 @@ export default function Home() {
     async function buscarUsuarios() {
       try {
         const resposta = await fetch(
-          "http://localhost:3001/usuarios"
+          "/api/usuarios"
         );
 
         if (!resposta.ok) {
@@ -50,7 +50,7 @@ export default function Home() {
 
     try {
       const resposta = await fetch(
-        `http://localhost:3001/usuarios/${id}`,
+        `/api/usuarios/${id}`,
         {
           method: "DELETE",
         }

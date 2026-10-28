@@ -48,7 +48,7 @@ export default function EditarUsuario() {
     async function buscarUsuario() {
       try {
         const resposta = await fetch(
-          `http://localhost:3001/usuarios/${id}`
+          `/api/usuarios/${id}`
         );
 
         if (!resposta.ok) {
@@ -148,7 +148,7 @@ export default function EditarUsuario() {
 
     try {
       const resposta = await fetch(
-        `http://localhost:3001/usuarios/${id}`,
+        `/api/usuarios/${id}`,
         {
           method: "PATCH",
           headers: {

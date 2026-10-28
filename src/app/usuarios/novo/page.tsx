@@ -103,7 +103,7 @@ export default function CadastroUsuario() {
 
     try {
       const resposta = await fetch(
-        "http://localhost:3001/usuarios",
+        "/api/usuarios",
         {
           method: "POST",
           headers: {

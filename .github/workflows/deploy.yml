@@ -1,0 +1,28 @@
+name: Deploy Automatico
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, linux, x64]
+
+    steps:
+      - name: Atualizar repositorio
+        run: |
+          cd /home/nickolas/trabalho2-deploy-automatico
+          git pull --ff-only origin main
+
+      - name: Atualizar containers
+        run: |
+          cd /home/nickolas/trabalho2-deploy-automatico
+          docker compose up -d --build
+
+      - name: Verificar containers
+        run: |
+          cd /home/nickolas/trabalho2-deploy-automatico
+          docker compose ps

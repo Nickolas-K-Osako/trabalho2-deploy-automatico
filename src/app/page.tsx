@@ -70,7 +70,7 @@ export default function Home() {
 
   return (
     <main style={{ padding: "30px" }}>
-      <h1>Gerenciamento de Usuários</h1>
+      <h1>Gerenciamento de Usuários - Deploy Automático</h1>
       <h2>Listagem de Usuários</h2>
 
       <a href="/usuarios/novo">

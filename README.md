@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Trabalho 2 — Deploy Automático em VM
 
-## Getting Started
+## Descrição
 
-First, run the development server:
+Aplicação web para gerenciamento de usuários, com funcionalidades de cadastro, listagem, edição e exclusão (CRUD).
+
+O projeto utiliza Docker Compose para executar o frontend e o backend em uma máquina virtual Ubuntu Server, com deploy automatizado pelo GitHub Actions.
+
+## Tecnologias utilizadas
+
+- Next.js e React
+- TypeScript
+- JSON Server
+- Docker e Docker Compose
+- Ubuntu Server
+- Git e GitHub
+- GitHub Actions (self-hosted runner)
+- Oracle VirtualBox
+
+## Infraestrutura
+
+- **Sistema operacional:** Ubuntu Server
+- **Virtualização:** Oracle VirtualBox
+- **IP da VM:** `192.168.18.215`
+- **Porta da aplicação:** `3000`
+- **Endereço:** `http://192.168.18.215:3000`
+
+O endereço é acessível a partir da rede local, enquanto a VM estiver ligada e os contêineres estiverem em execução.
+
+## Funcionamento do deploy automático
+
+O GitHub Actions utiliza um runner self-hosted instalado na máquina virtual Ubuntu Server.
+
+A cada push na branch `main`, o workflow executa:
+
+1. Atualização do repositório com `git pull`.
+2. Reconstrução e inicialização dos contêineres com `docker compose up -d --build`.
+3. Verificação dos serviços com `docker compose ps`.
+
+Dessa forma, as alterações enviadas ao GitHub são publicadas automaticamente na VM.
+
+## Execução manual
+
+Na pasta do projeto, execute:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+docker compose up -d --build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Para verificar os contêineres:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+docker compose ps
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Integrantes
 
-## Learn More
+- Nickolas Keiji Osako
 
-To learn more about Next.js, take a look at the following resources:
+## Repositório
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+https://github.com/Nickolas-K-Osako/trabalho2-deploy-automatico
